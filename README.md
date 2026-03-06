@@ -1,50 +1,47 @@
-# Welcome to your Expo app 👋
+# RN Searchable Card Demo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+一个基于 React Native + Expo 的练习项目，实现了“搜索 + 列表” + 选中态。
 
-## Get started
+## 功能说明
 
-1. Install dependencies
+- 关键词搜索（按 `name` / `desc` 过滤）
+- 卡片列表渲染（`FlatList`）
+- 点击卡片选中，再次点击取消选中
+- 空结果状态展示（没有匹配数据）
 
-   ```bash
-   npm install
-   ```
+## 技术点
 
-2. Start the app
+- `useState` 管理输入和选中状态
+- `useMemo` 计算派生列表，避免重复过滤计算
+- 组件拆分：`CardItem`、`filterItems`、`Item` 类型、`items` 数据源分离
+- TypeScript 类型约束（`Item`）
 
-   ```bash
-   npx expo start
-   ```
+## 项目结构
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```text
+app/
+   index.tsx
+components/
+   card-item.tsx
+types/
+   item.ts
+data/
+   items.ts
+utils/
+   filter-items.ts
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 本地运行
 
-## Learn more
+```bash
+pnpm install
+pnpm expo run:android
+pnpm expo start --dev-client
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## 我在这个项目里学到了什么
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- React 到 RN 的组件映射思路
+- RN 中列表与交互状态的基本实现
+- 派生状态与源状态的区别
+- 代码按职责拆分，提升可维护性
