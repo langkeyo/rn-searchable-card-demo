@@ -10,18 +10,11 @@ type Props = {
 export function CardItem({ item, active, onSelect }: Props) {
   return (
     <Pressable
+      className={`border ${active ? 'border-blue-600 bg-blue-50' : 'border-gray-300 bg-white'} rounded-[10px] p-3 mb-2.5`}
       onPress={() => onSelect(item.id)}
-      style={{
-        borderWidth: 1,
-        borderColor: active ? '#1677ff' : '#ddd',
-        backgroundColor: active ? '#eaf3ff' : '#fff',
-        borderRadius: 10,
-        padding: 12,
-        marginBottom: 10
-      }}
     >
-      <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{item.name}</Text>
-      <Text style={{ marginTop: 4, color: '#666' }}>{item.desc}</Text>
+      <Text className="text-base font-bold">{item.name}</Text>
+      <Text className="mt-1 text-gray-400">{item.desc}</Text>
     </Pressable>
   )
 }
